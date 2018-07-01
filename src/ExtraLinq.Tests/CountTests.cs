@@ -18,6 +18,7 @@ namespace ExtraLinq.Tests
             Assert.IsTrue(array.AtLeast(0));
             Assert.IsTrue(array.AtLeast(1));
             Assert.IsTrue(array.AtLeast(4));
+            Assert.IsTrue(array.AtLeast(5));
             Assert.IsFalse(array.AtLeast(6));
         }
 
@@ -49,7 +50,8 @@ namespace ExtraLinq.Tests
         {
             IEnumerable<int> array = null;
 
-            var result = array.AtLeast(1);
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var _ = array.AtLeast(1);
         }
 
         [TestMethod]
@@ -58,7 +60,7 @@ namespace ExtraLinq.Tests
         {
             var array = Enumerable.Range(1, 5);
 
-            var result = array.AtLeast(-1);
+            var _ = array.AtLeast(-1);
         }
 
         [TestMethod]
@@ -129,7 +131,21 @@ namespace ExtraLinq.Tests
         {
             var array = Enumerable.Range(1, 5);
 
-            var result = array.CountBetween(5, 1);
+            var _ = array.CountBetween(5, 1);
+        }
+
+        [TestMethod]
+        public void AtMost()
+        {
+            var array = Enumerable.Range(1, 5);
+
+            Assert.IsFalse(array.AtMost(0));
+            Assert.IsFalse(array.AtMost(1));
+            Assert.IsFalse(array.AtMost(4));
+
+            Assert.IsTrue(array.AtMost(5));
+            Assert.IsTrue(array.AtMost(6));
+            Assert.IsTrue(array.AtMost(int.MaxValue));
         }
     }
 }

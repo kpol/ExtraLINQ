@@ -11,9 +11,9 @@ namespace ExtraLinq
             if (source == null) throw Error.ArgumentNull(nameof(source));
             if (selector == null) throw Error.ArgumentNull(nameof(selector));
 
-            return Imp();
+            return _();
 
-            IEnumerable<TSource> Imp()
+            IEnumerable<TSource> _()
             {
                 var set = new HashSet<TKey>(comparer);
 

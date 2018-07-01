@@ -4,7 +4,7 @@ namespace ExtraLinq
 {
     public static partial class ExtraEnumerable
     {
-        public static bool AtLeast<TSource>(this IEnumerable<TSource> source, int count)
+        public static bool AtMost<TSource>(this IEnumerable<TSource> source, int count)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -18,11 +18,11 @@ namespace ExtraLinq
 
             if (totalCount.HasValue)
             {
-                return totalCount >= count;
+                return totalCount <= count;
             }
 
             // ReSharper disable once PossibleMultipleEnumeration
-            return CountBetweenImpl(source, count, int.MaxValue);
+            return CountBetweenImpl(source, 0, count);
         }
     }
 }
