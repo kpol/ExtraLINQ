@@ -86,6 +86,7 @@ namespace ExtraLinq
 
             return sum;
         }
+
         public static uint Sum(this uint[] source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
@@ -159,6 +160,7 @@ namespace ExtraLinq
 
             return sum;
         }
+
         public static long Sum(this long[] source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
@@ -232,6 +234,7 @@ namespace ExtraLinq
 
             return sum;
         }
+
         public static ulong Sum(this ulong[] source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
@@ -305,6 +308,7 @@ namespace ExtraLinq
 
             return sum;
         }
+
         public static float Sum(this float[] source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));

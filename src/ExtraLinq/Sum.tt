@@ -94,6 +94,7 @@ namespace ExtraLinq
 
             return sum;
         }
+
 <# } #>
 <# string[] typesFloating = {"float", "double", "decimal"};
 		foreach (var type in typesFloating) {#>
