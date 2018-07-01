@@ -23,18 +23,17 @@ namespace ExtraLinq
                 throw Error.MinIsGreaterThanMax(nameof(min), nameof(max));
             }
 
-            if (source is ICollection<TSource> collection)
-            {
-                return collection.Count >= min && collection.Count <= max;
-            }
+            // ReSharper disable once PossibleMultipleEnumeration
+            var count = source.GetCount();
 
-            if (source is IReadOnlyCollection<TSource> readOnlyCollection)
+            if (count.HasValue)
             {
-                return readOnlyCollection.Count >= min && readOnlyCollection.Count <= max;
+                return count >= min && count <= max;
             }
 
             int number = 0;
 
+            // ReSharper disable once PossibleMultipleEnumeration
             using (var enumeratorSource = source.GetEnumerator())
             {
                 while (enumeratorSource.MoveNext())

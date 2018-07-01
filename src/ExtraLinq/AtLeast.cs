@@ -13,18 +13,17 @@ namespace ExtraLinq
                 throw Error.CountIsNegative(nameof(count));
             }
 
-            if (source is ICollection<TSource> collection)
-            {
-                return collection.Count >= count;
-            }
+            // ReSharper disable once PossibleMultipleEnumeration
+            var totalCount = GetCount(source);
 
-            if (source is IReadOnlyCollection<TSource> readOnlyCollection)
+            if (totalCount.HasValue)
             {
-                return readOnlyCollection.Count >= count;
+                return totalCount >= count;
             }
 
             int number = 0;
 
+            // ReSharper disable once PossibleMultipleEnumeration
             using (var enumeratorSource = source.GetEnumerator())
             {
                 while (enumeratorSource.MoveNext())
