@@ -28,6 +28,11 @@ namespace ExtraLinq
                 return collection.Count >= min && collection.Count <= max;
             }
 
+            if (source is IReadOnlyCollection<TSource> readOnlyCollection)
+            {
+                return readOnlyCollection.Count >= min && readOnlyCollection.Count <= max;
+            }
+
             int number = 0;
 
             using (var enumeratorSource = source.GetEnumerator())

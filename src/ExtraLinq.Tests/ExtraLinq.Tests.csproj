@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CountTests.cs" />
     <Compile Include="DistinctByTests.cs" />
+    <Compile Include="MaxMinByTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

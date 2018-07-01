@@ -18,6 +18,11 @@ namespace ExtraLinq
                 return collection.Count >= count;
             }
 
+            if (source is IReadOnlyCollection<TSource> readOnlyCollection)
+            {
+                return readOnlyCollection.Count >= count;
+            }
+
             int number = 0;
 
             using (var enumeratorSource = source.GetEnumerator())
