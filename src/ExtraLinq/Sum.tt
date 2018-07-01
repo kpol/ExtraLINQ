@@ -58,7 +58,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static <#= type #> Sum(this List<<#= type #>> source)
+        public static <#= type #> Sum(this List<<#= type #>> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -75,7 +75,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static <#= type #>? Sum(this List<<#= type #>?> source)
+        public static <#= type #>? Sum(this List<<#= type #>?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -138,7 +138,7 @@ namespace ExtraLinq
             return <#= type == "float" ? "(float)" : string.Empty#>sum;
         }
 
-		public static <#= type #> Sum(this List<<#= type #>> source)
+        public static <#= type #> Sum(this List<<#= type #>> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -157,7 +157,7 @@ namespace ExtraLinq
             return <#= type == "float" ? "(float)" : string.Empty#>sum;
         }
 
-		public static <#= type #>? Sum(this List<<#= type #>?> source)
+        public static <#= type #>? Sum(this List<<#= type #>?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 

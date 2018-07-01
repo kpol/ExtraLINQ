@@ -50,7 +50,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static int Sum(this List<int> source)
+        public static int Sum(this List<int> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -67,7 +67,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static int? Sum(this List<int?> source)
+        public static int? Sum(this List<int?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -123,7 +123,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static uint Sum(this List<uint> source)
+        public static uint Sum(this List<uint> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -140,7 +140,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static uint? Sum(this List<uint?> source)
+        public static uint? Sum(this List<uint?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -196,7 +196,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static long Sum(this List<long> source)
+        public static long Sum(this List<long> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -213,7 +213,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static long? Sum(this List<long?> source)
+        public static long? Sum(this List<long?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -269,7 +269,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static ulong Sum(this List<ulong> source)
+        public static ulong Sum(this List<ulong> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -286,7 +286,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static ulong? Sum(this List<ulong?> source)
+        public static ulong? Sum(this List<ulong?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -336,7 +336,7 @@ namespace ExtraLinq
             return (float)sum;
         }
 
-		public static float Sum(this List<float> source)
+        public static float Sum(this List<float> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -350,7 +350,7 @@ namespace ExtraLinq
             return (float)sum;
         }
 
-		public static float? Sum(this List<float?> source)
+        public static float? Sum(this List<float?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -397,7 +397,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static double Sum(this List<double> source)
+        public static double Sum(this List<double> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -411,7 +411,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static double? Sum(this List<double?> source)
+        public static double? Sum(this List<double?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -458,7 +458,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static decimal Sum(this List<decimal> source)
+        public static decimal Sum(this List<decimal> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
@@ -472,7 +472,7 @@ namespace ExtraLinq
             return sum;
         }
 
-		public static decimal? Sum(this List<decimal?> source)
+        public static decimal? Sum(this List<decimal?> source)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
