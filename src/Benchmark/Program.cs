@@ -9,6 +9,8 @@ namespace Benchmark
 {
     public class ExtraLinqBenchmark
     {
+        private readonly IEnumerable<long> _source;
+
         private readonly long[] _data;
 
         private readonly List<long> _dataList;
@@ -17,7 +19,8 @@ namespace Benchmark
         {
             const int count = 1000000;
             var random = new Random().Next(5000);
-            _data = Enumerable.Range(random, random + count).Select(i => (long) i).ToArray();
+            _source = Enumerable.Range(random, random + count).Select(i => (long)i);
+            _data = _source.ToArray();
             _dataList = _data.ToList();
         }
 
@@ -38,6 +41,12 @@ namespace Benchmark
 
         [Benchmark]
         public long MaxByExtraLinq() => ExtraEnumerable.MaxBy((IEnumerable<long>)_dataList, i => i);
+
+        [Benchmark]
+        public bool ExactlyLinq() => Enumerable.Take(_source, 501).Count() == 500;
+
+        [Benchmark]
+        public bool ExactlyExtraLinq() => ExtraEnumerable.Exactly(_source, 500);
     }
 
     public class Program
