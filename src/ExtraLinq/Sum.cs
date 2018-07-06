@@ -492,5 +492,5 @@ namespace ExtraLinq
 
             return sum;
         }
-	}
+    }
 }

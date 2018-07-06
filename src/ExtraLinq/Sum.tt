@@ -180,5 +180,5 @@ namespace ExtraLinq
             return <#= type == "float" ? "(float)" : string.Empty#>sum;
         }
 <#}#>
-	}
+    }
 }
