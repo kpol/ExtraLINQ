@@ -374,7 +374,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			double sum = 0;
+            double sum = 0;
 
             foreach (var i in source)
             {
@@ -388,7 +388,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			double sum = 0;
+            double sum = 0;
 
             foreach (var i in source)
             {
@@ -405,7 +405,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			double sum = 0;
+            double sum = 0;
 
             foreach (var i in source)
             {
@@ -419,7 +419,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			double sum = 0;
+            double sum = 0;
 
             foreach (var i in source)
             {
@@ -435,7 +435,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			decimal sum = 0;
+            decimal sum = 0;
 
             foreach (var i in source)
             {
@@ -449,7 +449,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			decimal sum = 0;
+            decimal sum = 0;
 
             foreach (var i in source)
             {
@@ -466,7 +466,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			decimal sum = 0;
+            decimal sum = 0;
 
             foreach (var i in source)
             {
@@ -480,7 +480,7 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-			decimal sum = 0;
+            decimal sum = 0;
 
             foreach (var i in source)
             {

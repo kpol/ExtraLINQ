@@ -106,7 +106,7 @@ namespace ExtraLinq
             double sum = 0;
 <# } #>
 <# else { #>
-			<#= type #> sum = 0;
+            <#= type #> sum = 0;
 <# } #>
 
             foreach (var i in source)
@@ -125,7 +125,7 @@ namespace ExtraLinq
             double sum = 0;
 <# } #>
 <# else { #>
-			<#= type #> sum = 0;
+            <#= type #> sum = 0;
 <# } #>
 
             foreach (var i in source)
@@ -147,7 +147,7 @@ namespace ExtraLinq
             double sum = 0;
 <# } #>
 <# else { #>
-			<#= type #> sum = 0;
+            <#= type #> sum = 0;
 <# } #>
 
             foreach (var i in source)
@@ -166,7 +166,7 @@ namespace ExtraLinq
             double sum = 0;
 <# } #>
 <# else { #>
-			<#= type #> sum = 0;
+            <#= type #> sum = 0;
 <# } #>
 
             foreach (var i in source)
