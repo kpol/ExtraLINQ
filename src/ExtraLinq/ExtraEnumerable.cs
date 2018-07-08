@@ -5,7 +5,7 @@ namespace ExtraLinq
 {
     public static partial class ExtraEnumerable
     {
-        private static int? GetCount<TSource>(this IEnumerable<TSource> source)
+        private static int? TryGetCount<TSource>(this IEnumerable<TSource> source)
         {
             if (source is ICollection<TSource> collection)
             {

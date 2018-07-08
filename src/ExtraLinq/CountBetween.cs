@@ -24,7 +24,7 @@ namespace ExtraLinq
             }
 
             // ReSharper disable once PossibleMultipleEnumeration
-            var count = source.GetCount();
+            var count = source.TryGetCount();
 
             if (count.HasValue)
             {

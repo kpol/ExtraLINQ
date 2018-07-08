@@ -10,7 +10,7 @@ namespace ExtraLinq
             if (count < 0) throw Error.CountIsNegative(nameof(count));
 
             // ReSharper disable once PossibleMultipleEnumeration
-            var totalCount = source.GetCount();
+            var totalCount = source.TryGetCount();
 
             if (totalCount.HasValue)
             {
