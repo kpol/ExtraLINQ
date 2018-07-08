@@ -6,18 +6,19 @@ namespace ExtraLinq
 {
     public static partial class ExtraEnumerable
     {
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector, IEqualityComparer<TKey> comparer = null)
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
-            if (selector == null) throw Error.ArgumentNull(nameof(selector));
+            if (keySelector == null) throw Error.ArgumentNull(nameof(keySelector));
 
             return _();
 
             IEnumerable<TSource> _()
             {
-                var set = new HashSet<TKey>(comparer);
+                var set = new HashSet<TKey>(keyComparer);
 
-                return source.Where(item => set.Add(selector(item)));
+                return source.Where(item => set.Add(keySelector(item)));
             }
         }
     }
