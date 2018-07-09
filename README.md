@@ -6,7 +6,7 @@ Why do we actually need some extra `IEnumerable<T>` extensions? Imagine, you hav
 ```csharp
 var theMostExpensiveProduct = products.OrderByDescending(p => p.Price).FirstOrDefault();
 ```
-Complexity of the code is `O(n log n)` but obvously this operation can be done in `O(n)`. For this operation ExtraLINQ has `MaxBy` method`:
+Complexity of the code is `O(n log n)` but obvously this operation can be done in `O(n)`. For this operation ExtraLINQ has `MaxBy` method:
 ```csharp
 var theMostExpensiveProduct = products.MaxBy(p => p.Price);
 ```
