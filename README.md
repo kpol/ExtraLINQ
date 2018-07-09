@@ -36,49 +36,49 @@ Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the m
 
 # List of methods
 **AtLeast**  
-Checks whether the number of elements is greater or equal to the given integer.
+Checks whether the number of elements is greater or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
 bool result = source.AtLeast(5);
 ```
 
 **AtMost**  
-Checks whether the number of elements is less or equal to the given integer.
+Checks whether the number of elements is less or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
 bool result = source.AtMost(5);
 ```
 
 **CountBetween**  
-Checks whether the number of elements is between an inclusive range of minimum and maximum integers. 
+Checks whether the number of elements is between an inclusive range of minimum and maximum integers. Complexity is `O(1)` or `O(max)` where `max` is the second parameter supplied into the method.
 ```csharp
 bool result = source.CountBetween(4, 6);
 ```
 
 **Exactly**  
-Checks whether the number of elements in the source is equal to the given integer. Complexity is `O(1)` or `O(n)`.
+Checks whether the number of elements in the source is equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
 bool result = source.Exactly(5);
 ```
 
 **DistinctBy**  
-Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)`.
+Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.DistinctBy(p => p.Category);
 ```
 
 **MaxBy**  
-Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)`.
+Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.MaxBy(p => p.Price);
 ```
 
 **MinBy**  
-Returns the minimal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)`.
+Returns the minimal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.MinBy(p => p.Price);
 ```
 
 **Pairwise**  
-Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element.
+Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element. Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
 ```
