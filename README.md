@@ -17,7 +17,7 @@ Obviously this operation can be done in true `O(n)`. For this operation ExtraLIN
 ```csharp
 var theMostExpensiveProduct = products.MaxBy(p => p.Price);
 ```
-Or imagine another case: you need to check whether sequence length is lesser than or equal to `5`. What you normally see is this:
+Or imagine another case: you need to check whether sequence length is less than or equal to `5`. What you normally see is this:
 ```csharp
 bool checkCount = products.Count() <= 5;
 ```
@@ -42,7 +42,7 @@ bool result = source.AtLeast(5);
 ```
 
 **AtMost**  
-Checks whether the number of elements is lesser or equal to the given integer.
+Checks whether the number of elements is less or equal to the given integer.
 ```csharp
 bool result = source.AtMost(5);
 ```
