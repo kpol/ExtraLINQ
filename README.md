@@ -7,7 +7,7 @@ Why do we actually need some extra `IEnumerable<T>` extensions? Imagine, you hav
 var theMostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
 ```
 Complexity of the code is `O(n log n)`.  
-Slightly better solution:
+Better approach:
 ```csharp
 var maxPrice = products.Max(p => p.Price);
 var theMostExpensiveProduct = products.First(p => p.Price == maxPrice);
@@ -22,17 +22,17 @@ Or imagine another case: you need to check whether sequence length is less than 
 bool checkCount = products.Count() <= 5;
 ```
 This code is `O(1)` if `products` is actually some sort of collection which implements `IReadOnlyCollection<T>` or `ICollection<T>`. But if it does not, the code above will iterate through all items, becoming `O(n)`.
-What we actually need to do, is iterate through first `6` items, i.e.:
+If `products` doesn't implement these interfaces, better approach is iterate through first `6` items and check `Count()`, i.e.:
 ```csharp
 bool checkCount = products.Take(6).Count() <= 5;
-```
-But at the same time, if the collection implements `IReadOnlyCollection<T>` or `ICollection<T>` this code won't run in `O(1)`.  
+``` 
 To omit these drawbacks ExtraLINQ has `AtMost` method:
 ```csharp
 bool checkCount = products.AtMost(5);
 ```
+Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `T[]` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.  
 
-Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `T[]` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.
+*Summarizing:* all this sort of improvements are micro-optimizations, which can be very beneficial for a large enterprise project.
 
 # List of methods
 **AtLeast**  
