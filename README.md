@@ -17,6 +17,18 @@ Obvously this operation can be done in true `O(n)`. For this operation ExtraLINQ
 ```csharp
 var theMostExpensiveProduct = products.MaxBy(p => p.Price);
 ```
+Or imagine another case: you need to check whether sequence length is lesser than or equal to 5. What you normally see is this:
+```csharp
+bool checkCount = products.Count() <= 5;
+```
+This code is O(1) if `products` is actually some sort of collection which implements `IReadOnlyCollection<T>` or `ICollection<T>`. But if it is not, the code above will iterate through all items, becoming O(n).
+What we actually need to do, is iterate through first 6 items, i.e.:
+```csharp
+bool checkCount = products.Take(6).Count() <= 5;
+```
+But at the same time, if the collection implements `IReadOnlyCollection<T>` or `ICollection<T>` this code won't run in O(1).  
+<!--That's why ExtraLINQ provides `AtMost` method, which -->
+
 Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `Array` and `List<T>`. These methods work fatser and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.
 
 # List of methods
