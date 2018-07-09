@@ -32,7 +32,7 @@ To omit these drawbacks ExtraLINQ has `AtMost` method:
 bool checkCount = products.AtMost(5);
 ```
 
-Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `Array` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.
+Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `T[]` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.
 
 # List of methods
 **AtLeast**  
@@ -81,4 +81,10 @@ var result = source.MinBy(p => p.Price);
 Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element.
 ```csharp
 var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
+```
+
+**Sum**  
+Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`
+```csharp
+var result = source.Sum();
 ```
