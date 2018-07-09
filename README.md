@@ -48,31 +48,31 @@ bool result = source.AtMost(5);
 ```
 
 **CountBetween**  
-Checks whether the number of elements is between an inclusive range of minimum and maximum integers.
+Checks whether the number of elements is between an inclusive range of minimum and maximum integers. 
 ```csharp
 bool result = source.CountBetween(4, 6);
 ```
 
 **Exactly**  
-Checks whether the number of elements in the source is equal to the given integer.
+Checks whether the number of elements in the source is equal to the given integer. Complexity is `O(1)` or `O(n)`.
 ```csharp
 bool result = source.Exactly(5);
 ```
 
 **DistinctBy**  
-Returns distinct elements of the given source using `keySelector` and comparer (can be `null`).
+Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)`.
 ```csharp
 var result = source.DistinctBy(p => p.Category);
 ```
 
 **MaxBy**  
-Returns the maximal element of the given source based on the given selector and comparer (can be `null`).
+Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)`.
 ```csharp
 var result = source.MaxBy(p => p.Price);
 ```
 
 **MinBy**  
-Returns the minimal element of the given source based on the given selector and comparer (can be `null`).
+Returns the minimal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)`.
 ```csharp
 var result = source.MinBy(p => p.Price);
 ```
@@ -84,7 +84,13 @@ var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
 ```
 
 **Sum**  
-Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`
+Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
 ```csharp
 var result = source.Sum();
+```
+
+**TakeLast**  
+Returns a specified number of elements from the end of a sequence.
+```csharp
+var result = source.TakeLast(5);
 ```
