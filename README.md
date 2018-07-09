@@ -13,7 +13,7 @@ var maxPrice = products.Max(p => p.Price);
 var theMostExpensiveProduct = products.FirstOrDefault(p => p.Price == maxPrice);
 ```
 which is O(n) but in the worst case might iterate twice.  
-Obvously this operation can be done in true `O(n)`. For this operation ExtraLINQ has `MaxBy` method:
+Obviously this operation can be done in true `O(n)`. For this operation ExtraLINQ has `MaxBy` method:
 ```csharp
 var theMostExpensiveProduct = products.MaxBy(p => p.Price);
 ```
@@ -27,9 +27,12 @@ What we actually need to do, is iterate through first 6 items, i.e.:
 bool checkCount = products.Take(6).Count() <= 5;
 ```
 But at the same time, if the collection implements `IReadOnlyCollection<T>` or `ICollection<T>` this code won't run in O(1).  
-<!--That's why ExtraLINQ provides `AtMost` method, which -->
+To omit these drawbacks ExtraLINQ has `AtMost` method:
+```csharp
+bool checkCount = products.AtMost(5);
+```
 
-Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `Array` and `List<T>`. These methods work fatser and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.
+Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `Array` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.
 
 # List of methods
 **AtLeast**  
