@@ -21,7 +21,7 @@ Or imagine another case: you need to check whether sequence length is lesser tha
 ```csharp
 bool checkCount = products.Count() <= 5;
 ```
-This code is `O(1)` if `products` is actually some sort of collection which implements `IReadOnlyCollection<T>` or `ICollection<T>`. But if it is not, the code above will iterate through all items, becoming `O(n)`.
+This code is `O(1)` if `products` is actually some sort of collection which implements `IReadOnlyCollection<T>` or `ICollection<T>`. But if it does not, the code above will iterate through all items, becoming `O(n)`.
 What we actually need to do, is iterate through first `6` items, i.e.:
 ```csharp
 bool checkCount = products.Take(6).Count() <= 5;
