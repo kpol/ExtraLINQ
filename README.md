@@ -76,3 +76,9 @@ Returns the minimal element of the given source based on the given selector and 
 ```csharp
 var result = source.MinBy(p => p.Price);
 ```
+
+**Pairwise**  
+Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element.
+```csharp
+var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
+```
