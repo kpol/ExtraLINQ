@@ -48,7 +48,7 @@ bool result = source.AtMost(5);
 ```
 
 **CountBetween**  
-Checks whether the number of elements is between an inclusive range of minimum and maximum integers
+Checks whether the number of elements is between an inclusive range of minimum and maximum integers.
 ```csharp
 bool result = source.CountBetween(4, 6);
 ```
