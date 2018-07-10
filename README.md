@@ -35,31 +35,31 @@ Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the m
 *Summarizing:* all this sort of improvements are micro-optimizations, which can be very beneficial for a large enterprise project.
 
 # List of methods
-**AtLeast**  
+### AtLeast
 Checks whether the number of elements is greater or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
 bool result = source.AtLeast(5);
 ```
 
-**AtMost**  
+### AtMost
 Checks whether the number of elements is less or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
 bool result = source.AtMost(5);
 ```
 
-**CountBetween**  
+### CountBetween
 Checks whether the number of elements is between an inclusive range of minimum and maximum integers. Complexity is `O(1)` or `O(max)` where `max` is the second parameter supplied into the method.
 ```csharp
 bool result = source.CountBetween(4, 6);
 ```
 
-**Exactly**  
+### Exactly
 Checks whether the number of elements in the source is equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
 bool result = source.Exactly(5);
 ```
 
-**ExceptBy**  
+### ExceptBy
 Returns the set of elements in the first sequence which aren't in the second sequence, according to a given key selector and comparer (can be `null`). Parameter `includeDuplicates` specifies whether to retun duplicates from the first sequence.
 ```csharp
 var result = first.ExceptBy(second, i => i.Id);
@@ -69,37 +69,37 @@ var result = first.ExceptBy(second, i => i.Id);
 var result = first.ExceptBy(firstItem => firstItem.Property, second, secondItem => secondItem.Property);
 ```
 
-**DistinctBy**  
+### DistinctBy
 Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.DistinctBy(p => p.Category);
 ```
 
-**MaxBy**  
+### MaxBy
 Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.MaxBy(p => p.Price);
 ```
 
-**MinBy**  
+### MinBy
 Returns the minimal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.MinBy(p => p.Price);
 ```
 
-**Pairwise**  
+### Pairwise
 Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element. Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
 ```
 
-**Sum**  
+### Sum
 Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
 ```csharp
 var result = source.Sum();
 ```
 
-**TakeLast**  
+### TakeLast
 Returns a specified number of elements from the end of a sequence.
 ```csharp
 var result = source.TakeLast(5);
