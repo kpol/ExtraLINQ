@@ -59,6 +59,16 @@ Checks whether the number of elements in the source is equal to the given intege
 bool result = source.Exactly(5);
 ```
 
+**ExceptBy**  
+Returns the set of elements in the first sequence which aren't in the second sequence, according to a given key selector and comparer (can be `null`). Parameter `includeDuplicates` specifies whether to retun duplicates from the first sequence.
+```csharp
+var result = first.ExceptBy(second, i => i.Id);
+```
+`ExceptBy` has an overload which accepts sequences with different generic `T` types. In this case you need to specify two key selectors: one for the first sequence and another one for the second sequence. These two selectors must return the same type.
+```csharp
+var result = first.ExceptBy(firstItem => firstItem.Property, second, secondItem => secondItem.Property);
+```
+
 **DistinctBy**  
 Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
