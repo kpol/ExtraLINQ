@@ -93,6 +93,12 @@ Returns a sequence of each element in the input sequence and its predecessor, wi
 var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
 ```
 
+### Random
+Returns an infinite sequence of random integers using the standard .NET random number generator. This implementation of `Random` is thread-safe.
+```csharp
+var result = ExtraEnumerable.Random(5, 4);
+```
+
 ### Sum
 Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
 ```csharp
