@@ -23,5 +23,10 @@ namespace ExtraLinq
         {
             return new ArgumentOutOfRangeException(min, $"Parameter {min} should be less or equal to parameter {max}");
         }
+
+        public static Exception MaxValueLessThanZero(string parameter)
+        {
+            return new ArgumentOutOfRangeException(parameter, $"'{parameter}' must be greater than zero.");
+        }
     }
 }
