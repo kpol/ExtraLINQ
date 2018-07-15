@@ -8,7 +8,7 @@ var theMostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
 ```
 Complexity of the code is `O(n log n)`.  
 Better approach:
-```csharp
+```sharp
 var maxPrice = products.Max(p => p.Price);
 var theMostExpensiveProduct = products.First(p => p.Price == maxPrice);
 ```
@@ -60,7 +60,7 @@ bool result = source.Exactly(5);
 ```
 
 ### ExceptBy
-Returns the set of elements in the first sequence which aren't in the second sequence, according to a given key selector and comparer (can be `null`). Parameter `includeDuplicates` specifies whether to retun duplicates from the first sequence.
+Returns the set of elements in the first sequence which aren't in the second sequence, according to a given key selector and comparer (can be `null`). Parameter `includeDuplicates` specifies whether to return duplicates from the first sequence.
 ```csharp
 var result = first.ExceptBy(second, i => i.Id);
 ```
