@@ -8,7 +8,7 @@ var theMostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
 ```
 Complexity of the code is `O(n log n)`.  
 Better approach:
-```sharp
+```csharp
 var maxPrice = products.Max(p => p.Price);
 var theMostExpensiveProduct = products.First(p => p.Price == maxPrice);
 ```
