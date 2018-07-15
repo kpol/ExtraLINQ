@@ -53,6 +53,12 @@ Checks whether the number of elements is between an inclusive range of minimum a
 bool result = source.CountBetween(4, 6);
 ```
 
+### DistinctBy
+Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
+```csharp
+var result = source.DistinctBy(p => p.Category);
+```
+
 ### Exactly
 Checks whether the number of elements in the source is equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
@@ -67,12 +73,6 @@ var result = first.ExceptBy(second, i => i.Id);
 `ExceptBy` has an overload which accepts sequences with different generic `T` types. In this case you need to specify two key selectors: one for the first sequence and another one for the second sequence. These two selectors must return the same type.
 ```csharp
 var result = first.ExceptBy(firstItem => firstItem.Property, second, secondItem => secondItem.Property);
-```
-
-### DistinctBy
-Returns distinct elements of the given source using `keySelector` and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
-```csharp
-var result = source.DistinctBy(p => p.Category);
 ```
 
 ### MaxBy
