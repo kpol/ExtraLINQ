@@ -105,6 +105,12 @@ Returns an infinite sequence of random floating-point number that is greater tha
 var result = ExtraEnumerable.RandomDouble();
 ```
 
+### Shuffle
+Returns an infinite sequence of a random permutation of a finite sequence using Fisher–Yates algorithm. If `Random` instance is not supplied into the method, thread-safe implementation of `Random` is used. Complexity is `O(n)`.
+```csharp
+var result = ExtraEnumerable.RandomDouble();
+```
+
 ### Sum
 Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
 ```csharp
