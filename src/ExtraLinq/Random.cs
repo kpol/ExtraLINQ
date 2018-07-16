@@ -31,6 +31,10 @@ namespace ExtraLinq
             return RandomImplementation(random, r => r.Next(minValue, maxValue));
         }
 
+        public static IEnumerable<double> RandomDouble(Random random = null)
+        {
+            return RandomImplementation(random, r => r.NextDouble());
+        }
 
         private static IEnumerable<T> RandomImplementation<T>(Random random, Func<Random, T> next)
         {
