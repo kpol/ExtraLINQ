@@ -54,6 +54,7 @@
     <Compile Include="MaxMinByTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomTests.cs" />
+    <Compile Include="ShuffleTests.cs" />
     <Compile Include="TakeLastTests.cs" />
     <Compile Include="PairwiseTests.cs" />
     <Compile Include="ExceptByTests.cs" />

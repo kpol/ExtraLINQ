@@ -38,10 +38,7 @@ namespace ExtraLinq
 
         private static IEnumerable<T> RandomImplementation<T>(Random random, Func<Random, T> next)
         {
-            if (random == null)
-            {
-                random = GlobalRandom.Instance;
-            }
+            random = random ?? GlobalRandom.Instance;
 
             while (true)
             {
