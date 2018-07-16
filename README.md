@@ -108,7 +108,7 @@ var result = ExtraEnumerable.RandomDouble();
 ### Shuffle
 Returns an infinite sequence of a random permutation of a finite sequence using Fisher–Yates algorithm. If `Random` instance is not supplied into the method, thread-safe implementation of `Random` is used. Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
-var result = ExtraEnumerable.Shuffle();
+var result = source.Shuffle();
 ```
 
 ### Sum
