@@ -94,9 +94,15 @@ var result = source.Pairwise((first, second) => $"{first.Id} {second.Id}");
 ```
 
 ### Random
-Returns an infinite sequence of random integers using the standard .NET random number generator. This implementation of `Random` is thread-safe.
+Returns an infinite sequence of random integers using the standard .NET random number generator. If `Random` instance is not supplied into the method, thread-safe implementation of `Random` is used.
 ```csharp
-var result = ExtraEnumerable.Random(5, 4);
+var result = ExtraEnumerable.Random(1, 10);
+```
+
+### RandomDouble
+Returns an infinite sequence of random floating-point number that is greater than or equal to 0.0, and less than 1.0. If `Random` instance is not supplied into the method, thread-safe implementation of `Random` is used.
+```csharp
+var result = ExtraEnumerable.RandomDouble();
 ```
 
 ### Sum
