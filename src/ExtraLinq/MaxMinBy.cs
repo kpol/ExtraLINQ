@@ -81,6 +81,11 @@ namespace ExtraLinq
             int count,
             Func<int, TSource> getItem)
         {
+            if (count == 0)
+            {
+                throw Error.NoElements();
+            }
+
             var extrema = getItem(0);
             var extremaKey = selector(extrema);
 

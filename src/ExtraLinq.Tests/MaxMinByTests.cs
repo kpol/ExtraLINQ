@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExtraLinq.Tests
@@ -16,7 +17,7 @@ namespace ExtraLinq.Tests
                 new TestData {Prop1 = 3, Prop2 = 30}
             };
 
-            var max = source.AsEnumerable().MaxBy(i => i.Prop1);
+            var max = source.Select(x => x).MaxBy(i => i.Prop1);
 
             Assert.AreEqual(3, max.Prop1);
             Assert.AreEqual(30, max.Prop2);
@@ -49,7 +50,7 @@ namespace ExtraLinq.Tests
                 new TestData {Prop1 = 3, Prop2 = 30}
             };
 
-            var max = source.AsEnumerable().MinBy(i => i.Prop1);
+            var max = source.Select(x => x).MinBy(i => i.Prop1);
 
             Assert.AreEqual(1, max.Prop1);
             Assert.AreEqual(10, max.Prop2);
@@ -69,6 +70,22 @@ namespace ExtraLinq.Tests
 
             Assert.AreEqual(1, max.Prop1);
             Assert.AreEqual(10, max.Prop2);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MaxByNoElements()
+        {
+            var _ = Enumerable.Empty<TestData>().Select(x => x).MaxBy(i => i.Prop1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MaxByArrayNoElements()
+        {
+            var source = new TestData[0];
+
+            var _ = source.MaxBy(i => i.Prop1);
         }
 
         public class TestData
