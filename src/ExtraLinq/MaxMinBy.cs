@@ -13,17 +13,7 @@ namespace ExtraLinq
 
             comparer = comparer ?? Comparer<TKey>.Default;
 
-            if (source is IList<TSource> list)
-            {
-                return GetExtremaList(selector, (x, y) => comparer.Compare(x, y), list.Count, i => list[i]);
-            }
-
-            if (source is IReadOnlyList<TSource> readOnlyList)
-            {
-                return GetExtremaList(selector, (x, y) => comparer.Compare(x, y), readOnlyList.Count, i => readOnlyList[i]);
-            }
-
-            return GetExtrema(source, selector, (x, y) => comparer.Compare(x, y));
+            return MaxMinByImplementation(source, selector, (x, y) => comparer.Compare(x, y));
         }
 
         public static TSource MinBy<TSource, TKey>(this IEnumerable<TSource> source,
@@ -34,17 +24,23 @@ namespace ExtraLinq
 
             comparer = comparer ?? Comparer<TKey>.Default;
 
+            return MaxMinByImplementation(source, selector, (x, y) => comparer.Compare(y, x));
+        }
+
+        private static TSource MaxMinByImplementation<TSource, TKey>(IEnumerable<TSource> source,
+            Func<TSource, TKey> selector, Func<TKey, TKey, int> funcComparer)
+        {
             if (source is IList<TSource> list)
             {
-                return GetExtremaList(selector, (x, y) => comparer.Compare(y, x), list.Count, i => list[i]);
+                return GetExtremaList(selector, funcComparer, list.Count, i => list[i]);
             }
 
             if (source is IReadOnlyList<TSource> readOnlyList)
             {
-                return GetExtremaList(selector, (x, y) => comparer.Compare(y, x), readOnlyList.Count, i => readOnlyList[i]);
+                return GetExtremaList(selector, funcComparer, readOnlyList.Count, i => readOnlyList[i]);
             }
 
-            return GetExtrema(source, selector, (x, y) => comparer.Compare(y, x));
+            return GetExtrema(source, selector, funcComparer);
         }
 
         private static TSource GetExtrema<TSource, TKey>(IEnumerable<TSource> source,
