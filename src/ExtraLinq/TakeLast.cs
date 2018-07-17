@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ExtraLinq
 {
@@ -12,39 +14,51 @@ namespace ExtraLinq
 
             IEnumerable<TSource> _()
             {
-
                 if (count <= 0)
                 {
-                    yield break;
+                    return Enumerable.Empty<TSource>();
                 }
 
-                if (source is IReadOnlyList<TSource> list)
+                if (source is IReadOnlyList<TSource> readOnlyList)
                 {
-                    var c = count > list.Count ? list.Count : count;
-
-                    for (int i = list.Count - c; i < list.Count; i++)
-                    {
-                        yield return list[i];
-                    }
+                    return ListImplementation(readOnlyList.Count, i => readOnlyList[i]);
                 }
-                else
+
+                if (source is IList<TSource> list)
                 {
-                    var q = new Queue<TSource>(count);
+                    return ListImplementation(list.Count, i => list[i]);
+                }
 
-                    foreach (var item in source)
+                return EnumerableImplementation();
+            }
+
+            IEnumerable<TSource> ListImplementation(int length, Func<int, TSource> getItem)
+            {
+                var c = count > length ? length : count;
+
+                for (int i = length - c; i < length; i++)
+                {
+                    yield return getItem(i);
+                }
+            }
+
+            IEnumerable<TSource> EnumerableImplementation()
+            {
+                var q = new Queue<TSource>(count);
+
+                foreach (var item in source)
+                {
+                    if (q.Count == count)
                     {
-                        if (q.Count == count)
-                        {
-                            q.Dequeue();
-                        }
-
-                        q.Enqueue(item);
+                        q.Dequeue();
                     }
 
-                    foreach (var item in q)
-                    {
-                        yield return item;
-                    }
+                    q.Enqueue(item);
+                }
+
+                foreach (var item in q)
+                {
+                    yield return item;
                 }
             }
         }
