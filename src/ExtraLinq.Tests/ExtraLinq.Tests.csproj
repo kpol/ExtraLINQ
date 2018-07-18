@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AverageTests.cs" />
     <Compile Include="CountTests.cs" />
     <Compile Include="DistinctByTests.cs" />
     <Compile Include="ExactlyTests.cs" />

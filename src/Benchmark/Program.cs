@@ -31,6 +31,12 @@ namespace Benchmark
         public long SumArrayExtraLinq() => ExtraEnumerable.Sum(_data);
 
         [Benchmark]
+        public double AverageArrayLinq() => Enumerable.Average(_data);
+
+        [Benchmark]
+        public double AverageArrayExtraLinq() => ExtraEnumerable.Average(_data);
+
+        [Benchmark]
         public long SumListLinq() => Enumerable.Sum(_dataList);
 
         [Benchmark]
@@ -40,7 +46,10 @@ namespace Benchmark
         public long MaxLinq() => Enumerable.Max(_data);
 
         [Benchmark]
-        public long MaxByExtraLinq() => ExtraEnumerable.MaxBy((IEnumerable<long>)_dataList, i => i);
+        public long MaxOrderByLinq() => Enumerable.OrderByDescending(_data, x => x).First();
+
+        [Benchmark]
+        public long MaxByExtraLinq() => ExtraEnumerable.MaxBy(_data, i => i);
 
         [Benchmark]
         public bool ExactlyLinq() => Enumerable.Take(_source, 501).Count() == 500;

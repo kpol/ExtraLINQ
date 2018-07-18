@@ -5,9 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Sum.tt">
+    <Compile Update="Sum.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Sum.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Average.tt">
+      <LastGenOutput>Average.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Sum.tt">
       <LastGenOutput>Sum.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
     </None>
   </ItemGroup>
 
@@ -16,10 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Sum.cs">
+    <Compile Update="Average.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Sum.tt</DependentUpon>
+      <DependentUpon>Average.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
