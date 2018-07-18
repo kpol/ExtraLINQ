@@ -93,6 +93,12 @@ Returns the minimal element of the given source based on the given selector and 
 var result = source.MinBy(p => p.Price);
 ```
 
+### OrderBy / ThenBy
+Sorts the elements of a sequence in ascending or descending order according to a key. Internaly uses standard LINQ `OrderBy`, `OrderByDescending`, `ThenBy` and `ThenByDescending`. Complexity is `O(n)` where `n` is number of elements in the sequence.
+```csharp
+var result = source.OrderBy(p => p.Price, SortOrder.Descending).ThenBy(p => p.Name, SortOrder.Ascending);
+```
+
 ### Pairwise
 Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element. Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
