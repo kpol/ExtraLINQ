@@ -94,7 +94,7 @@ var result = source.MinBy(p => p.Price);
 ```
 
 ### OrderBy / ThenBy
-Sorts the elements of a sequence in ascending or descending order according to a key. Internaly uses standard LINQ `OrderBy`, `OrderByDescending`, `ThenBy` and `ThenByDescending`. Complexity is `O(n)` where `n` is number of elements in the sequence.
+Sorts the elements of a sequence in ascending or descending order according to a key. Internaly uses standard LINQ `OrderBy`, `OrderByDescending`, `ThenBy` and `ThenByDescending`. Complexity is `O(n log n)` where `n` is number of elements in the sequence.
 ```csharp
 var result = source.OrderBy(p => p.Price, SortOrder.Descending).ThenBy(p => p.Name, SortOrder.Ascending);
 ```
