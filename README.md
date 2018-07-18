@@ -47,6 +47,12 @@ Checks whether the number of elements is less or equal to the given integer. Com
 bool result = source.AtMost(5);
 ```
 
+### Average
+Returns the average of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
+```csharp
+var result = source.Average();
+```
+
 ### CountBetween
 Checks whether the number of elements is between an inclusive range of minimum and maximum integers. Complexity is `O(1)` or `O(max)` where `max` is the second parameter supplied into the method.
 ```csharp
