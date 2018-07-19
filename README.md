@@ -53,7 +53,7 @@ Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the m
 * [Sum](#sum)
 * [TakeLast](#takelast)
 * [ToHashSet](#tohashset)
-
+---
 ### AtLeast
 Checks whether the number of elements is greater or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
