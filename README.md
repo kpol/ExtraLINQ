@@ -35,6 +35,25 @@ Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the m
 *Summarizing:* all this sort of improvements are micro-optimizations, which can be very beneficial for a large enterprise project.
 
 # List of methods
+[AtLeast](#atleast)  
+[AtMost](#atmost)
+[Average](#average)  
+[CountBetween](#countbetween)  
+[DistinctBy](#distinctby)  
+[Exactly](#exactly)  
+[ExceptBy](#exceptby)  
+[ForEach](#foreach)  
+[MaxBy](#maxby)  
+[MinBy](#minBy)  
+[OrderBy / ThenBy](#orderby--thenby)  
+[Pairwise](#pairwise)  
+[Random](#random)  
+[RandomDouble](#randomdouble)  
+[Shuffle](#shuffle)  
+[Sum](#sum)  
+[TakeLast](#takelast)  
+
+
 ### AtLeast
 Checks whether the number of elements is greater or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
 ```csharp
