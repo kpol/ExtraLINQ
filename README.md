@@ -7,7 +7,7 @@ Why do we actually need some extra `IEnumerable<T>` extensions? Imagine, you hav
 var theMostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
 ```
 Complexity of this code is `O(n log n)`.  
-Better approach:
+Better approach would be:
 ```csharp
 var maxPrice = products.Max(p => p.Price);
 var theMostExpensiveProduct = products.First(p => p.Price == maxPrice);
