@@ -52,7 +52,7 @@ Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the m
 * [Shuffle](#shuffle)
 * [Sum](#sum)
 * [TakeLast](#takelast)
-
+* [ToHashSet](#tohashset)
 
 ### AtLeast
 Checks whether the number of elements is greater or equal to the given integer. Complexity is `O(1)` or `O(m)` where `m` is number supplied into the method.
@@ -158,4 +158,10 @@ var result = source.Sum();
 Returns a specified number of elements from the end of a sequence.
 ```csharp
 var result = source.TakeLast(5);
+```
+
+### ToHashSet
+Creates a HashSet<T> from an IEnumerable<T>.
+```csharp
+var result = source.ToHashSet();
 ```
