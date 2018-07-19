@@ -81,6 +81,12 @@ var result = first.ExceptBy(second, i => i.Id);
 var result = first.ExceptBy(firstItem => firstItem.Property, second, secondItem => secondItem.Property);
 ```
 
+### ForEach
+Performs the specified action on each element of the a sequence.
+```csharp
+source.ForEach((x, i) => { Console.WriteLine($"Item: {x}; Index: {i}"); });
+```
+
 ### MaxBy
 Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
 ```csharp
