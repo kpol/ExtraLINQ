@@ -4,23 +4,23 @@ namespace ExtraLinq
 {
     public static partial class ExtraEnumerable
     {
-        public static bool CountBetween<TSource>(this IEnumerable<TSource> source, int min, int max)
+        public static bool CountBetween<TSource>(this IEnumerable<TSource> source, int minInclusive, int maxInclusive)
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-            if (min < 0)
+            if (minInclusive < 0)
             {
-                throw Error.CountIsNegative(nameof(min));
+                throw Error.CountIsNegative(nameof(minInclusive));
             }
 
-            if (max < 0)
+            if (maxInclusive < 0)
             {
-                throw Error.CountIsNegative(nameof(max));
+                throw Error.CountIsNegative(nameof(maxInclusive));
             }
 
-            if (min > max)
+            if (minInclusive > maxInclusive)
             {
-                throw Error.MinIsGreaterThanMax(nameof(min), nameof(max));
+                throw Error.MinIsGreaterThanMax(nameof(minInclusive), nameof(maxInclusive));
             }
 
             // ReSharper disable once PossibleMultipleEnumeration
@@ -28,11 +28,11 @@ namespace ExtraLinq
 
             if (count.HasValue)
             {
-                return count >= min && count <= max;
+                return count >= minInclusive && count <= maxInclusive;
             }
 
             // ReSharper disable once PossibleMultipleEnumeration
-            return CountBetweenImpl(source, min, max);
+            return CountBetweenImpl(source, minInclusive, maxInclusive);
         }
 
         private static bool CountBetweenImpl<TSource>(IEnumerable<TSource> source, int min, int max)

@@ -11,24 +11,24 @@ namespace ExtraLinq
             return RandomImplementation(random, r => r.Next());
         }
 
-        public static IEnumerable<int> Random(int maxValue, Random random = null)
+        public static IEnumerable<int> Random(int maxValueExclusive, Random random = null)
         {
-            if (maxValue < 0)
+            if (maxValueExclusive < 0)
             {
-                throw Error.MaxValueLessThanZero(nameof(maxValue));
+                throw Error.MaxValueLessThanZero(nameof(maxValueExclusive));
             }
 
-            return RandomImplementation(random, r => r.Next(maxValue));
+            return RandomImplementation(random, r => r.Next(maxValueExclusive));
         }
 
-        public static IEnumerable<int> Random(int minValue, int maxValue, Random random = null)
+        public static IEnumerable<int> Random(int minValueInclusive, int maxValueExclusive, Random random = null)
         {
-            if (minValue > maxValue)
+            if (minValueInclusive > maxValueExclusive)
             {
-                throw Error.MinIsGreaterThanMax(nameof(minValue), nameof(maxValue));
+                throw Error.MinIsGreaterThanMax(nameof(minValueInclusive), nameof(maxValueExclusive));
             }
 
-            return RandomImplementation(random, r => r.Next(minValue, maxValue));
+            return RandomImplementation(random, r => r.Next(minValueInclusive, maxValueExclusive));
         }
 
         public static IEnumerable<double> RandomDouble(Random random = null)
