@@ -107,13 +107,13 @@ source.ForEach((x, i) => { Console.WriteLine($"Item: {x}; Index: {i}"); });
 ```
 
 ### MaxBy
-Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
+Returns the maximal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence. Has overloads for `T[]` and `List<T>` which are faster than LINQ `Max()` method.
 ```csharp
 var result = source.MaxBy(p => p.Price);
 ```
 
 ### MinBy
-Returns the minimal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence.
+Returns the minimal element of the given source based on the given selector and comparer (can be `null`). Complexity is `O(n)` where `n` is number of elements in the sequence. Has overloads for `T[]` and `List<T>` which are faster than LINQ `Min()` method.
 ```csharp
 var result = source.MinBy(p => p.Price);
 ```
