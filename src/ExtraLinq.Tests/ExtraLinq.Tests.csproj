@@ -52,6 +52,7 @@
     <Compile Include="CountTests.cs" />
     <Compile Include="DistinctByTests.cs" />
     <Compile Include="ExactlyTests.cs" />
+    <Compile Include="ForEachTests.cs" />
     <Compile Include="MaxMinByTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomTests.cs" />
