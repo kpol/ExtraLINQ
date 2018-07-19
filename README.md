@@ -67,7 +67,7 @@ bool result = source.AtMost(5);
 ```
 
 ### Average
-Returns the average of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
+Returns the average of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>` which are faster than LINQ `Average()` method.
 ```csharp
 var result = source.Average();
 ```
@@ -149,7 +149,7 @@ var result = source.Shuffle();
 ```
 
 ### Sum
-Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>`.
+Returns the sum of a sequence of numeric values. Has overloads for `int`, `uint`, `long`, `ulong`, `float`, `double`, `decimal`, corresponding `Nullable<T>`, and overloads for `T[]` and `List<T>` which are faster than LINQ `Sum()` method.
 ```csharp
 var result = source.Sum();
 ```
