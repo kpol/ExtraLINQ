@@ -10,27 +10,22 @@ namespace ExtraLinq
         {
             if (source == null) throw Error.ArgumentNull(nameof(source));
 
-            return _();
-
-            IEnumerable<TSource> _()
+            if (count <= 0)
             {
-                if (count <= 0)
-                {
-                    return Enumerable.Empty<TSource>();
-                }
-
-                if (source is IReadOnlyList<TSource> readOnlyList)
-                {
-                    return ListImplementation(readOnlyList.Count, i => readOnlyList[i]);
-                }
-
-                if (source is IList<TSource> list)
-                {
-                    return ListImplementation(list.Count, i => list[i]);
-                }
-
-                return EnumerableImplementation();
+                return Enumerable.Empty<TSource>();
             }
+
+            if (source is IReadOnlyList<TSource> readOnlyList)
+            {
+                return ListImplementation(readOnlyList.Count, i => readOnlyList[i]);
+            }
+
+            if (source is IList<TSource> list)
+            {
+                return ListImplementation(list.Count, i => list[i]);
+            }
+
+            return EnumerableImplementation();
 
             IEnumerable<TSource> ListImplementation(int length, Func<int, TSource> getItem)
             {
