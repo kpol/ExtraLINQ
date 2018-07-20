@@ -4,18 +4,18 @@
 ExtraLINQ is a set of extension methods for `IEnumerable<T>`.   
 Why do we actually need some extra `IEnumerable<T>` extensions? Imagine, you have a collection of Products and you need to get the most expensive product (the product with the highest price). Unfortunately for me, what I usually see in the code:
 ```csharp
-var theMostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
+var mostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
 ```
 Complexity of this code is `O(n log n)`.  
 Better approach would be:
 ```csharp
 var maxPrice = products.Max(p => p.Price);
-var theMostExpensiveProduct = products.First(p => p.Price == maxPrice);
+var mostExpensiveProduct = products.First(p => p.Price == maxPrice);
 ```
 which is `O(n)` but in the worst case might iterate twice.  
 Obviously this operation can be done in true `O(n)`. For this operation ExtraLINQ has `MaxBy` method:
 ```csharp
-var theMostExpensiveProduct = products.MaxBy(p => p.Price);
+var mostExpensiveProduct = products.MaxBy(p => p.Price);
 ```
 Or imagine another case: you need to check whether sequence length is less than or equal to `5`. What you normally see is this:
 ```csharp
