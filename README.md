@@ -161,7 +161,7 @@ var result = source.TakeLast(5);
 ```
 
 ### ToHashSet
-Creates a HashSet<T> from an IEnumerable<T>.
+Creates a `HashSet<T>` from an `IEnumerable<T>`.
 ```csharp
 var result = source.ToHashSet();
 ```
