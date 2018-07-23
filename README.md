@@ -43,6 +43,7 @@ Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the m
 * [Exactly](#exactly)
 * [ExceptBy](#exceptby)
 * [ForEach](#foreach)
+* [IntersectBy](#intersectby)
 * [MaxBy](#maxby)
 * [MinBy](#minby)
 * [OrderBy / ThenBy](#orderby--thenby)
@@ -91,7 +92,7 @@ bool result = source.Exactly(5);
 ```
 
 ### ExceptBy
-Returns the set of elements in the first sequence which aren't in the second sequence, according to a given key selector and comparer (can be `null`). Parameter `includeDuplicates` specifies whether to return duplicates from the first sequence.
+Returns the set of elements in the first sequence which aren't in the second sequence, according to a given key selector and comparer (can be `null`). Parameter `includeDuplicates` specifies whether to return duplicates from the first sequence. Complexity is `O(n)` where `n` is total number of elements in both sequences.
 ```csharp
 var result = first.ExceptBy(second, i => i.Id);
 ```
@@ -104,6 +105,12 @@ var result = first.ExceptBy(firstItem => firstItem.Property, second, secondItem 
 Performs the specified action on each element of the a sequence.
 ```csharp
 source.ForEach((x, i) => { Console.WriteLine($"Item: {x}; Index: {i}"); });
+```
+
+### IntersectBy
+Returns the set intersection of two sequences according to a given key selector and comparer (can be `null`). Complexity is `O(n)` where `n` is total number of elements in both sequences.
+```csharp
+var result = first.IntersectBy(second, i => i.Id);
 ```
 
 ### MaxBy
