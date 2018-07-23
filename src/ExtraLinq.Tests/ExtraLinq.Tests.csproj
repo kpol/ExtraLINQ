@@ -60,6 +60,7 @@
     <Compile Include="TakeLastTests.cs" />
     <Compile Include="PairwiseTests.cs" />
     <Compile Include="ExceptByTests.cs" />
+    <Compile Include="IntersectByTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
