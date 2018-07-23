@@ -1,7 +1,7 @@
-# ExtraEnumerable
+# ExtraLINQ
 [![Build status](https://ci.appveyor.com/api/projects/status/fn3jf7d0p25eo2rl?svg=true)](https://ci.appveyor.com/project/kpol/extralinq)
 
-ExtraEnumerable is a set of extension methods for `IEnumerable<T>`.   
+ExtraLINQ is a set of extension methods for `IEnumerable<T>`.   
 Why do we actually need some extra `IEnumerable<T>` extensions? Imagine, you have a collection of Products and you need to get the most expensive product (the product with the highest price). Unfortunately for me, what I usually see in the code:
 ```csharp
 var mostExpensiveProduct = products.OrderByDescending(p => p.Price).First();
@@ -13,7 +13,7 @@ var maxPrice = products.Max(p => p.Price);
 var mostExpensiveProduct = products.First(p => p.Price == maxPrice);
 ```
 which is `O(n)` but in the worst case might iterate twice.  
-Obviously this operation can be done in true `O(n)`. For this operation ExtraEnumerable has `MaxBy` method:
+Obviously this operation can be done in true `O(n)`. For this operation ExtraLINQ has `MaxBy` method:
 ```csharp
 var mostExpensiveProduct = products.MaxBy(p => p.Price);
 ```
@@ -26,11 +26,11 @@ If `products` doesn't implement these interfaces, better approach is iterate thr
 ```csharp
 bool checkCount = products.Take(6).Count() <= 5;
 ``` 
-To omit these drawbacks ExtraEnumerable has `AtMost` method:
+To omit these drawbacks ExtraLINQ has `AtMost` method:
 ```csharp
 bool checkCount = products.AtMost(5);
 ```
-Additionally ExtraEnumerable provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `T[]` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraEnumerable/tree/master/src/Benchmark) project.  
+Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `T[]` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.  
 
 *Summarizing:* all this sort of improvements are micro-optimizations, which can be very beneficial for a large enterprise project.
 
