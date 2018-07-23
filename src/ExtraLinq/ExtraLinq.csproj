@@ -14,6 +14,10 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Version>1.0.0</Version>
+    <PackageId>ExtraEnumerable</PackageId>
+    <Product>ExtraEnumerable</Product>
+    <Description>ExtraLinq is a set of extension methods for IEnumerable&lt;T&gt;. Additionally ExtraLinq contains extension methods for Array and List&lt;T&gt; which are faster and allocate less than LINQ extensions from System.Linq.</Description>
+    <Title>ExtraEnumerable</Title>
   </PropertyGroup>
 
   <ItemGroup>
