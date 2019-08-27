@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class MaxMinByTests
     {
-        [TestMethod]
+        [Fact]
         public void MaxBy()
         {
             TestData[] source =
@@ -19,12 +18,12 @@ namespace ExtraLinq.Tests
 
             var max = source.Select(x => x).MaxBy(i => i.Prop1);
 
-            Assert.AreEqual(3, max.Prop1);
-            Assert.AreEqual(30, max.Prop2);
+            Assert.Equal(3, max.Prop1);
+            Assert.Equal(30, max.Prop2);
         }
 
 
-        [TestMethod]
+        [Fact]
         public void MaxByArray()
         {
             TestData[] source =
@@ -36,11 +35,11 @@ namespace ExtraLinq.Tests
 
             var max = source.MaxBy(i => i.Prop1);
 
-            Assert.AreEqual(3, max.Prop1);
-            Assert.AreEqual(30, max.Prop2);
+            Assert.Equal(3, max.Prop1);
+            Assert.Equal(30, max.Prop2);
         }
 
-        [TestMethod]
+        [Fact]
         public void MinBy()
         {
             TestData[] source =
@@ -52,11 +51,11 @@ namespace ExtraLinq.Tests
 
             var max = source.Select(x => x).MinBy(i => i.Prop1);
 
-            Assert.AreEqual(1, max.Prop1);
-            Assert.AreEqual(10, max.Prop2);
+            Assert.Equal(1, max.Prop1);
+            Assert.Equal(10, max.Prop2);
         }
 
-        [TestMethod]
+        [Fact]
         public void MinByArray()
         {
             TestData[] source =
@@ -68,24 +67,23 @@ namespace ExtraLinq.Tests
 
             var max = source.MinBy(i => i.Prop1);
 
-            Assert.AreEqual(1, max.Prop1);
-            Assert.AreEqual(10, max.Prop2);
+            Assert.Equal(1, max.Prop1);
+            Assert.Equal(10, max.Prop2);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [Fact]
         public void MaxByNoElements()
         {
-            var _ = Enumerable.Empty<TestData>().Select(x => x).MaxBy(i => i.Prop1);
+            Assert.Throws<InvalidOperationException>(() =>
+                Enumerable.Empty<TestData>().Select(x => x).MaxBy(i => i.Prop1));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [Fact]
         public void MaxByArrayNoElements()
         {
             var source = new TestData[0];
 
-            var _ = source.MaxBy(i => i.Prop1);
+            Assert.Throws<InvalidOperationException>(() => source.MaxBy(i => i.Prop1));
         }
 
         public class TestData

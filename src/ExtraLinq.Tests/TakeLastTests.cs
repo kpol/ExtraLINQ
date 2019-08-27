@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class TakeLastTests
     {
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void TakeLastSourceIsNull()
         {
-            var _ = ((IEnumerable<int>) null).TakeLast(2);
+            Assert.Throws<ArgumentNullException>(() => ((IEnumerable<int>) null).TakeLast(2));
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastCountEqualsZero()
         {
             var source = Enumerable.Range(0, 6);
@@ -24,10 +23,10 @@ namespace ExtraLinq.Tests
 
             var resultArray = result.ToArray();
 
-            Assert.AreEqual(0, resultArray.Length);
+            Assert.Empty(resultArray);
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastCountLessThanZero()
         {
             var source = Enumerable.Range(0, 6);
@@ -36,30 +35,30 @@ namespace ExtraLinq.Tests
 
             var resultArray = result.ToArray();
 
-            Assert.AreEqual(0, resultArray.Length);
+            Assert.Empty(resultArray);
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastCount()
         {
             var source = Enumerable.Range(0, 6);
 
             var result = source.TakeLast(2);
 
-            CollectionAssert.AreEquivalent(new[] { 4, 5 }, result.ToArray());
+            Assert.Equal(new[] { 4, 5 }, result.ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastMoreThanCount()
         {
             var source = Enumerable.Range(0, 6);
 
             var result = source.TakeLast(100).ToArray();
 
-            CollectionAssert.AreEquivalent(source.ToArray(), result.ToArray());
+            Assert.Equal(source.ToArray(), result.ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastArrayCountEqualsZero()
         {
             var source = Enumerable.Range(0, 6).ToArray();
@@ -68,10 +67,10 @@ namespace ExtraLinq.Tests
 
             var resultArray = result.ToArray();
 
-            Assert.AreEqual(0, resultArray.Length);
+            Assert.Empty(resultArray);
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastArrayCountLessThanZero()
         {
             var source = Enumerable.Range(0, 6).ToArray();
@@ -80,27 +79,27 @@ namespace ExtraLinq.Tests
 
             var resultArray = result.ToArray();
 
-            Assert.AreEqual(0, resultArray.Length);
+            Assert.Empty(resultArray);
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastArrayCount()
         {
             var source = Enumerable.Range(0, 6).ToArray();
 
             var result = source.TakeLast(2);
 
-            CollectionAssert.AreEquivalent(new[] {4, 5}, result.ToArray());
+            Assert.Equal(new[] {4, 5}, result.ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void TakeLastArrayMoreThanCount()
         {
             var source = Enumerable.Range(0, 6).ToArray();
 
             var result = source.TakeLast(100);
 
-            CollectionAssert.AreEquivalent(source, result.ToArray());
+            Assert.Equal(source, result.ToArray());
         }
     }
 }

@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class DistinctByTests
     {
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ThrowsExceptionSource()
         {
             IEnumerable<int> test = null;
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var result = test.DistinctBy(x => x);
+
+            Assert.Throws<ArgumentNullException>(() => test.DistinctBy(x => x));
         }
 
         private IEnumerable<Tuple<int, string>> GetTestData()

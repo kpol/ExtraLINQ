@@ -1,19 +1,18 @@
 ﻿using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class ShuffleTests
     {
-        [TestMethod]
+        [Fact]
         public void ShuffleSource()
         {
             var source = Enumerable.Range(1, 5).ToArray();
 
             var shuffle = source.Shuffle().ToArray();
 
-            CollectionAssert.AreEquivalent(source, shuffle);
+            Assert.Equal(source, shuffle.OrderBy(x => x));
         }
     }
 }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class ExceptByTests
     {
-        [TestMethod]
+        [Fact]
         public void ExceptBySimple()
         {
             var first = Enumerable.Range(1, 5).Select(i => new First { KeyFirst = i, ValueFirst = $"first_{i * 10}" });
@@ -18,11 +17,11 @@ namespace ExtraLinq.Tests
 
             var result = first.ExceptBy(second, k => k.KeyFirst).ToArray();
 
-            CollectionAssert.AreEquivalent(new[] { 3, 5 }, result.Select(i => i.KeyFirst).ToArray());
-            CollectionAssert.AreEquivalent(new[] { "first_30", "first_50" }, result.Select(i => i.ValueFirst).ToArray());
+            Assert.Equal(new[] {3, 5}, result.Select(i => i.KeyFirst).OrderBy(x => x).ToArray());
+            Assert.Equal(new[] { "first_30", "first_50" }, result.Select(i => i.ValueFirst).OrderBy(x => x).ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void ExceptBySimpleDuplicates()
         {
             var first = Enumerable.Range(1, 5)
@@ -34,11 +33,11 @@ namespace ExtraLinq.Tests
 
             var result = first.ExceptBy(second, k => k.KeyFirst).ToArray();
 
-            CollectionAssert.AreEquivalent(new[] { 3, 5 }, result.Select(i => i.KeyFirst).ToArray());
-            CollectionAssert.AreEquivalent(new[] { "first_30", "first_50" }, result.Select(i => i.ValueFirst).ToArray());
+            Assert.Equal(new[] { 3, 5 }, result.Select(i => i.KeyFirst).OrderBy(x => x).ToArray());
+            Assert.Equal(new[] { "first_30", "first_50" }, result.Select(i => i.ValueFirst).OrderBy(x => x).ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void ExceptBySimpleIncludeDuplicates()
         {
             var first = Enumerable.Range(1, 5)
@@ -50,11 +49,11 @@ namespace ExtraLinq.Tests
 
             var result = first.ExceptBy(second, k => k.KeyFirst, true).ToArray();
 
-            CollectionAssert.AreEquivalent(new[] { 3, 5, 3 }, result.Select(i => i.KeyFirst).ToArray());
-            CollectionAssert.AreEquivalent(new[] { "first_30", "first_50", "first_30" }, result.Select(i => i.ValueFirst).ToArray());
+            Assert.Equal(new[] { 3, 3, 5 }, result.Select(i => i.KeyFirst).OrderBy(x => x).ToArray());
+            Assert.Equal(new[] { "first_30", "first_30", "first_50" }, result.Select(i => i.ValueFirst).OrderBy(x => x).ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void ExceptByDifferentSources()
         {
             var first = Enumerable.Range(1, 5).Select(i => new First { KeyFirst = i, ValueFirst = $"first_{i * 10}" });
@@ -64,15 +63,14 @@ namespace ExtraLinq.Tests
 
             var result = first.ExceptBy(f => f.KeyFirst, second, s => s.KeySecond).ToArray();
 
-            CollectionAssert.AreEquivalent(new[] { 3, 5 }, result.Select(i => i.KeyFirst).ToArray());
-            CollectionAssert.AreEquivalent(new[] { "first_30", "first_50" }, result.Select(i => i.ValueFirst).ToArray());
+            Assert.Equal(new[] { 3, 5 }, result.Select(i => i.KeyFirst).OrderBy(x => x).ToArray());
+            Assert.Equal(new[] { "first_30", "first_50" }, result.Select(i => i.ValueFirst).OrderBy(x => x).ToArray());
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ExceptBySourceIsNull()
         {
-            var _ = ((IEnumerable<int>) null).ExceptBy(new int[0], i => i);
+            Assert.Throws<ArgumentNullException>(() => ((IEnumerable<int>) null).ExceptBy(new int[0], i => i));
         }
 
         private class First

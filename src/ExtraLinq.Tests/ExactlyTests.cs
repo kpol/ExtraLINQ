@@ -1,72 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-// ReSharper disable PossibleMultipleEnumeration
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class ExactlyTests
     {
-        [TestMethod]
-        public void ExactlyArray()
+        [Theory]
+        [InlineData(5, true)]
+        [InlineData(0, false)]
+        [InlineData(1, false)]
+        [InlineData(6, false)]
+        public void ExactlyArray(int count, bool expected)
         {
             var source = Enumerable.Range(1, 5).ToArray();
+            var result = source.Exactly(count);
 
-            Assert.IsTrue(source.Exactly(5));
-            Assert.IsFalse(source.Exactly(0));
-            Assert.IsFalse(source.Exactly(1));
-            Assert.IsFalse(source.Exactly(6));
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [Fact]
         public void ExactlySourceIsNull()
         {
-            var _ = ((IEnumerable<int>)null).Exactly(1);
+            Assert.Throws<ArgumentNullException>(() => ((IEnumerable<int>) null).Exactly(1));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void ExactlyCountIsNegative()
         {
             int[] source = { 1, 2, 3, 4, 5 };
 
-            var _ = source.Exactly(-2);
+            Assert.Throws<ArgumentOutOfRangeException>(() => source.Exactly(-2));
         }
 
-        [TestMethod]
-        public void ExactlyEnumerable()
+        [Theory]
+        [InlineData(5, true)]
+        [InlineData(0, false)]
+        [InlineData(1, false)]
+        [InlineData(6, false)]
+        public void ExactlyEnumerable(int count, bool expected)
         {
             var source = Enumerable.Range(1, 5);
+            var result = source.Exactly(count);
 
-            Assert.IsTrue(source.Exactly(5));
-            Assert.IsFalse(source.Exactly(0));
-            Assert.IsFalse(source.Exactly(1));
-            Assert.IsFalse(source.Exactly(6));
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void ExactlyEmpty()
+        [Theory]
+        [InlineData(0, true)]
+        [InlineData(1, false)]
+        [InlineData(2, false)]
+        [InlineData(100, false)]
+        public void ExactlyEmpty(int count, bool expected)
         {
             var source = Enumerable.Empty<int>();
+            var result = source.Exactly(count);
 
-            Assert.IsTrue(source.Exactly(0));
-            Assert.IsFalse(source.Exactly(1));
-            Assert.IsFalse(source.Exactly(2));
-            Assert.IsFalse(source.Exactly(100));
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void ExactlyEmptyArray()
+        [Theory]
+        [InlineData(0, true)]
+        [InlineData(1, false)]
+        [InlineData(2, false)]
+        [InlineData(100, false)]
+        public void ExactlyEmptyArray(int count, bool expected)
         {
             var source = Enumerable.Empty<int>().ToArray();
+            var result = source.Exactly(count);
 
-            Assert.IsTrue(source.Exactly(0));
-            Assert.IsFalse(source.Exactly(1));
-            Assert.IsFalse(source.Exactly(2));
-            Assert.IsFalse(source.Exactly(100));
+            Assert.True(expected == result);
         }
     }
 }

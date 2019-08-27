@@ -1,34 +1,34 @@
 ﻿using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+
 // ReSharper disable InvokeAsExtensionMethod
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class AverageTests
     {
-        [TestMethod]
+        [Fact]
         public void AverageInt()
         {
             var source = Enumerable.Range(-100, 450).ToArray();
 
-            Assert.AreEqual(Enumerable.Average(source), ExtraEnumerable.Average(source));
+            Assert.Equal(Enumerable.Average(source), ExtraEnumerable.Average(source));
         }
 
-        [TestMethod]
+        [Fact]
         public void AverageUInt()
         {
             var source = Enumerable.Range(0, 4500).ToArray();
 
-            Assert.AreEqual(Enumerable.Average(source), ExtraEnumerable.Average(source.Select(x => (uint)x).ToArray()));
+            Assert.Equal(Enumerable.Average(source), ExtraEnumerable.Average(source.Select(x => (uint)x).ToArray()));
         }
 
-        [TestMethod]
+        [Fact]
         public void AverageNullableInt()
         {
             var source = Enumerable.Range(0, 4500).Select(x => (int?)x).Concat(new int?[] {null, null, null}).Shuffle().ToArray();
 
-            Assert.AreEqual(Enumerable.Average(source), ExtraEnumerable.Average(source));
+            Assert.Equal(Enumerable.Average(source), ExtraEnumerable.Average(source));
         }
     }
 }

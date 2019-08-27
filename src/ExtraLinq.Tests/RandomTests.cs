@@ -1,33 +1,30 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class RandomTests
     {
-        [TestMethod]
+        [Fact]
         public void RandomNext()
         {
             var random = ExtraEnumerable.Random(1, 3).Take(50).ToArray();
 
-            Assert.AreEqual(50, random.Length);
-            Assert.IsTrue(random.All(n => n >= 1 && n <= 2));
+            Assert.Equal(50, random.Length);
+            Assert.True(random.All(n => n >= 1 && n <= 2));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void RandomMaxIsNegative()
         {
-            var _ = ExtraEnumerable.Random(-3);
+            Assert.Throws<ArgumentOutOfRangeException>(() => ExtraEnumerable.Random(-3));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void RandomMinIsGreaterThanMax()
         {
-            var _ = ExtraEnumerable.Random(5, 4);
+            Assert.Throws<ArgumentOutOfRangeException>(() => ExtraEnumerable.Random(5, 4));
         }
     }
 }

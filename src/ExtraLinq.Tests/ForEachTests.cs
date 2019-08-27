@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     public class ForEachTests
     {
-        [TestMethod]
+        [Fact]
         public void ForEachEnumerable()
         {
             var source = Enumerable.Range(1, 2);
@@ -16,7 +15,7 @@ namespace ExtraLinq.Tests
 
             source.ForEach((x, i) => { sb.Append($"{{{x},{i}}}");});
 
-            Assert.AreEqual("{1,0}{2,1}", sb.ToString());
+            Assert.Equal("{1,0}{2,1}", sb.ToString());
         }
     }
 }

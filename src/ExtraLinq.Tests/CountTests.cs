@@ -2,150 +2,149 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ExtraLinq.Tests
 {
-    [TestClass]
     [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
     public class CountTests
     {
-        [TestMethod]
-        public void AtLeast()
+        [Theory]
+        [InlineData(0, true)]
+        [InlineData(1, true)]
+        [InlineData(5, true)]
+        [InlineData(6, false)]
+        public void AtLeast(int count, bool expected)
         {
             var array = Enumerable.Range(1, 5);
 
-            Assert.IsTrue(array.AtLeast(0));
-            Assert.IsTrue(array.AtLeast(1));
-            Assert.IsTrue(array.AtLeast(4));
-            Assert.IsTrue(array.AtLeast(5));
-            Assert.IsFalse(array.AtLeast(6));
+            var result = array.AtLeast(count);
+
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void AtLeastArray()
+        [Theory]
+        [InlineData(0, true)]
+        [InlineData(1, true)]
+        [InlineData(5, true)]
+        [InlineData(6, false)]
+        public void AtLeastArray(int count, bool expected)
         {
             var array = Enumerable.Range(1, 5).ToArray();
 
-            Assert.IsTrue(array.AtLeast(0));
-            Assert.IsTrue(array.AtLeast(1));
-            Assert.IsTrue(array.AtLeast(4));
-            Assert.IsFalse(array.AtLeast(6));
+            var result = array.AtLeast(count);
+
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void AtLeastCollection()
+        [Theory]
+        [InlineData(0, true)]
+        [InlineData(1, true)]
+        [InlineData(5, true)]
+        [InlineData(6, false)]
+        public void AtLeastCollection(int count, bool expected)
         {
             IEnumerable<int> array = Enumerable.Range(1, 5).ToArray();
 
-            Assert.IsTrue(array.AtLeast(0));
-            Assert.IsTrue(array.AtLeast(1));
-            Assert.IsTrue(array.AtLeast(4));
-            Assert.IsFalse(array.AtLeast(6));
+            var result = array.AtLeast(count);
+
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+
+        [Fact]
         public void AtLeastSourceIsNull()
         {
             IEnumerable<int> array = null;
 
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var _ = array.AtLeast(1);
+            Assert.Throws<ArgumentNullException>(() => array.AtLeast(1));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void AtLeastCountIsNegative()
         {
             var array = Enumerable.Range(1, 5);
 
-            var _ = array.AtLeast(-1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => array.AtLeast(-1));
         }
 
-        [TestMethod]
-        public void CountBetween()
+        [Theory]
+        [InlineData(0, 0, false)]
+        [InlineData(0, 1, false)]
+        [InlineData(1, 4, false)]
+        [InlineData(2, 6, true)]
+        [InlineData(1, 10, true)]
+        [InlineData(6, 7, false)]
+        public void CountBetween(int min, int max, bool expected)
         {
             var array = Enumerable.Range(1, 5);
-
-            Assert.IsFalse(array.CountBetween(0, 0));
-            Assert.IsFalse(array.CountBetween(0, 1));
-            Assert.IsFalse(array.CountBetween(1, 4));
-
-            Assert.IsTrue(array.CountBetween(2, 6));
-            Assert.IsTrue(array.CountBetween(1, 10));
-
-            Assert.IsFalse(array.CountBetween(6, 7));
+            var result = array.CountBetween(min, max);
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void CountBetweenEmpty()
+        [Theory]
+        [InlineData(0, 0, true)]
+        [InlineData(0, 1, true)]
+        [InlineData(1, 4, false)]
+        [InlineData(2, 6, false)]
+        [InlineData(1, 10, false)]
+        [InlineData(6, 7, false)]
+        public void CountBetweenEmpty(int min, int max, bool expected)
         {
             var array = Enumerable.Empty<int>();
-
-            Assert.IsTrue(array.CountBetween(0, 0));
-
-            Assert.IsTrue(array.CountBetween(0, 1));
-
-            Assert.IsFalse(array.CountBetween(1, 4));
-            Assert.IsFalse(array.CountBetween(2, 6));
-            Assert.IsFalse(array.CountBetween(1, 10));
-
-            Assert.IsFalse(array.CountBetween(6, 7));
+            var result = array.CountBetween(min, max);
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void CountBetweenCollection()
+        [Theory]
+        [InlineData(0, 0, false)]
+        [InlineData(0, 1, false)]
+        [InlineData(1, 4, false)]
+        [InlineData(2, 6, true)]
+        [InlineData(1, 10, true)]
+        [InlineData(6, 7, false)]
+        public void CountBetweenCollection(int min, int max, bool expected)
         {
             IEnumerable<int> array = Enumerable.Range(1, 5).ToArray();
 
-            Assert.IsFalse(array.CountBetween(0, 0));
-            Assert.IsFalse(array.CountBetween(0, 1));
-            Assert.IsFalse(array.CountBetween(1, 4));
-
-            Assert.IsTrue(array.CountBetween(2, 6));
-            Assert.IsTrue(array.CountBetween(1, 10));
-
-            Assert.IsFalse(array.CountBetween(6, 7));
+            var result = array.CountBetween(min, max);
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        public void CountBetweenCollectionEmpty()
+        [Theory]
+        [InlineData(0, 0, true)]
+        [InlineData(0, 1, true)]
+        [InlineData(1, 4, false)]
+        [InlineData(2, 6, false)]
+        [InlineData(1, 10, false)]
+        [InlineData(6, 7, false)]
+        public void CountBetweenCollectionEmpty(int min, int max, bool expected)
         {
             IEnumerable<int> array = new int[0];
-
-            Assert.IsTrue(array.CountBetween(0, 0));
-
-            Assert.IsTrue(array.CountBetween(0, 1));
-
-            Assert.IsFalse(array.CountBetween(1, 4));
-            Assert.IsFalse(array.CountBetween(2, 6));
-            Assert.IsFalse(array.CountBetween(1, 10));
-
-            Assert.IsFalse(array.CountBetween(6, 7));
+            var result = array.CountBetween(min, max);
+            Assert.True(expected == result);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Fact]
         public void CountBetweenMinGreaterMax()
         {
             var array = Enumerable.Range(1, 5);
 
-            var _ = array.CountBetween(5, 1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => array.CountBetween(5, 1));
         }
 
-        [TestMethod]
-        public void AtMost()
+        [Theory]
+        [InlineData(0, false)]
+        [InlineData(1, false)]
+        [InlineData(4, false)]
+        [InlineData(5, true)]
+        [InlineData(6,  true)]
+        [InlineData(int.MaxValue, true)]
+        public void AtMost(int count, bool expected)
         {
             var array = Enumerable.Range(1, 5);
-
-            Assert.IsFalse(array.AtMost(0));
-            Assert.IsFalse(array.AtMost(1));
-            Assert.IsFalse(array.AtMost(4));
-
-            Assert.IsTrue(array.AtMost(5));
-            Assert.IsTrue(array.AtMost(6));
-            Assert.IsTrue(array.AtMost(int.MaxValue));
+            var result = array.AtMost(count);
+            Assert.True(expected == result);
         }
     }
 }
