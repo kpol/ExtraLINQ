@@ -33,6 +33,20 @@ bool checkCount = products.AtMost(5);
 ```
 Additionally ExtraLINQ provides overloads of some methods (e.g. `Sum`) for the most commonly used collections: `T[]` and `List<T>`. These methods work faster and allocate less than LINQ built-in methods. For benchmarks see [Benchmark](https://github.com/kpol/ExtraLINQ/tree/master/src/Benchmark) project.  
 
+|                Method |          Mean |       Error |        StdDev |        Median |
+|---------------------- |--------------:|------------:|--------------:|--------------:|
+|          SumArrayLinq |  8,868.799 us | 647.1369 us | 1,897.9404 us |  8,311.950 us |
+|     SumArrayExtraLinq |  1,027.563 us |  60.4231 us |   176.2571 us |    971.487 us |
+|      AverageArrayLinq |  8,006.273 us | 243.3820 us |   666.2542 us |  7,839.090 us |
+| AverageArrayExtraLinq |  1,141.601 us |  47.5776 us |   133.4128 us |  1,097.886 us |
+|           SumListLinq | 10,215.340 us | 361.8532 us | 1,032.3874 us |  9,840.073 us |
+|      SumListExtraLinq |  3,231.168 us |  64.2775 us |   177.0390 us |  3,193.271 us |
+|               MaxLinq |  7,362.926 us | 146.3407 us |   367.1402 us |  7,237.511 us |
+|        MaxOrderByLinq | 13,921.340 us | 268.3250 us |   237.8632 us | 13,831.188 us |
+|        MaxByExtraLinq |  7,101.532 us | 174.6859 us |   495.5549 us |  7,093.998 us |
+|           ExactlyLinq |      5.094 us |   0.2096 us |     0.6012 us |      4.925 us |
+|      ExactlyExtraLinq |      6.925 us |   0.1935 us |     0.5551 us |      6.842 us |
+
 *Summarizing:* all this sort of improvements are micro-optimizations, which can be very beneficial for a large enterprise project.
 
 # List of methods
