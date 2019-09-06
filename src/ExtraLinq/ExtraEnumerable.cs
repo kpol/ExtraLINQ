@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ExtraLinq
 {
@@ -15,11 +14,6 @@ namespace ExtraLinq
             if (source is IReadOnlyCollection<TSource> readOnlyCollection)
             {
                 return readOnlyCollection.Count;
-            }
-
-            if (source is ICollection col)
-            {
-                return col.Count;
             }
 
             return null;
