@@ -1,6 +1,6 @@
 # ExtraLINQ
 [![Build status](https://ci.appveyor.com/api/projects/status/fn3jf7d0p25eo2rl?svg=true)](https://ci.appveyor.com/project/kpol/extralinq)
-[![Nuget](https://img.shields.io/nuget/v/ExtraEnumerable.svg)](https://www.nuget.org/packages/ExtraEnumerable)
+[![Nuget](https://img.shields.io/nuget/v/ExtraEnumerable.svg?logo=nuget)](https://www.nuget.org/packages/ExtraEnumerable)
 
 ExtraLINQ is a set of extension methods for `IEnumerable<T>`.   
 Why do we actually need some extra `IEnumerable<T>` extensions? Imagine, you have a collection of Products and you need to get the most expensive product (the product with the highest price). Unfortunately for me, what I usually see in the code:
