@@ -25,7 +25,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.102
+          dotnet-version: 2.1.804
       - name: Pack
         run: dotnet pack ./src/*.sln --configuration Release -o package
       - name: Publish artifact
