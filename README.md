@@ -1,5 +1,5 @@
 # ExtraLINQ
-[![Build status](https://ci.appveyor.com/api/projects/status/fn3jf7d0p25eo2rl?svg=true)](https://ci.appveyor.com/project/kpol/extralinq)
+[![CI Build](https://github.com/kpol/ExtraLINQ/workflows/CI%20Build/badge.svg)](https://github.com/kpol/ExtraLINQ/actions)
 [![Nuget](https://img.shields.io/nuget/v/ExtraEnumerable.svg?logo=nuget)](https://www.nuget.org/packages/ExtraEnumerable)
 
 ExtraLINQ is a set of extension methods for `IEnumerable<T>`.   
